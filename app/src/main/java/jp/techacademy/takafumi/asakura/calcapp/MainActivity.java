@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mEditText = (EditText) findViewById(R.id.editText);
         mEditText2 = (EditText) findViewById(R.id.editText2);
 
+
         Button button = (Button) findViewById(R.id.button1);
         button.setOnClickListener(this);
 
@@ -34,15 +36,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button4.setOnClickListener(this);
 
 
-
     }
 
     @Override
     public void onClick(View v) {
-        double a = Double.parseDouble( mEditText.getText().toString() );
-        double b = Double.parseDouble( mEditText2.getText().toString() );
-        double r = 0.0f; // 取り敢えず0を入れておく
+        double a = 0.0;
+        double b = 0.0;
+        try {
+            a = Double.parseDouble( mEditText.getText().toString() );
+            b = Double.parseDouble( mEditText2.getText().toString() );
 
+        } catch (NumberFormatException e){
+            Toast.makeText(MainActivity.this, "値を入力してください。",
+                    Toast.LENGTH_LONG).show();
+        }
+
+        double r = 0.0f; // 取り敢えず0を入れておく
 
         if (v.getId() == R.id.button1) {
             r = a + b;
@@ -50,18 +59,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // button1 が押された
         else  if (v.getId() == R.id.button2) {
             r = a - b;
-
         }
                 // button2 が押された
          else  if (v.getId() == R.id.button3) {
             r = a * b;
-
         }
                 // button3 が押された
 
         else  if (v.getId() == R.id.button4) {
             r = a / b;
         }
+        if(Double.isNaN(r)){
+            Toast.makeText(MainActivity.this, "正しい値を入力してください。",
+                    Toast.LENGTH_LONG).show();
+        }
+
         Log.d("javatest" , String.valueOf(r));
               // button4が押された
         Intent intent = new Intent(this, SecondActivity.class);
