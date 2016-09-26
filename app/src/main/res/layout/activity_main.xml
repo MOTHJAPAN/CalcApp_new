@@ -8,17 +8,15 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
         android:text="0"
-        android:digits="01234567890"
+        android:digits="01234567890-."
         android:id="@+id/editText"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="0"
-        android:inputType="number"
-        android:digits="01234567890"
+        android:digits="01234567890-."
         android:id="@+id/editText2"/>
 
     <Button
