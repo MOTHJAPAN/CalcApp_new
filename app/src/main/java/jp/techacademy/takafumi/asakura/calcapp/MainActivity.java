@@ -79,7 +79,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // button3 が押された
 
         else if (v.getId() == R.id.button4) {
-            r = a.divide(b, java.math.BigDecimal.ROUND_HALF_UP);
+
+           r = a.divide(b, 10, java.math.BigDecimal.ROUND_HALF_UP);
+
         }
 
         if (r == null) {
