@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+
 public class SecondActivity extends AppCompatActivity {
 
     @Override
@@ -13,7 +15,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         Intent intent = getIntent();
-        Double value = intent.getDoubleExtra("VALUE" ,0);
+        BigDecimal value = (BigDecimal) intent.getSerializableExtra("VALUE");
 
 
         TextView textView = (TextView) findViewById(R.id.textView);
