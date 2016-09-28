@@ -48,23 +48,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             return;
         }
-        if (mEditText2.getText().toString().length() != 0 )
-        {
-            Log.d( "ErrorLog", "Error3" );
-            Toast.makeText(MainActivity.this, "0では割ることは出来ません。",
-                    Toast.LENGTH_LONG).show();
 
-            return;
-
-        }
         if( mEditText2.getText().toString().length() <= 0 )
 
         {
             Log.d( "ErrorLog", "Error2" );
             Toast.makeText(MainActivity.this, "数字を入力してください。",
                     Toast.LENGTH_LONG).show();
+
             return;
         }
+        double value2 = Double.parseDouble(mEditText2.getText().toString());
+        if (value2 == 0 && v.getId()==R.id.button4)
+        { Log.d( "ErrorLog", "Error3" );
+            Toast.makeText(MainActivity.this, "0で割らないでください。",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
 
 
 
