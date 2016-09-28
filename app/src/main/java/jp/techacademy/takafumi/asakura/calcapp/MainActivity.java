@@ -38,9 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button4.setOnClickListener(this);
     }
 
-
-
-
     @Override
     public void onClick(View v) {
         if( mEditText.getText().toString().length() <= 0 )
@@ -48,7 +45,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.d( "ErrorLog", "Error1" );
             Toast.makeText(MainActivity.this, "数字を入力してください。",
                     Toast.LENGTH_LONG).show();
+
             return;
+        }
+        if (mEditText2.getText().toString().length() != 0 )
+        {
+            Log.d( "ErrorLog", "Error3" );
+            Toast.makeText(MainActivity.this, "0では割ることは出来ません。",
+                    Toast.LENGTH_LONG).show();
+
+            return;
+
         }
         if( mEditText2.getText().toString().length() <= 0 )
 
@@ -58,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.LENGTH_LONG).show();
             return;
         }
+
+
 
         BigDecimal a = new java.math.BigDecimal(mEditText.getText().toString());
         java.math.BigDecimal b = new java.math.BigDecimal(mEditText2.getText().toString());
@@ -79,21 +88,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // button3 が押された
 
         else if (v.getId() == R.id.button4) {
-
            r = a.divide(b, 10, java.math.BigDecimal.ROUND_HALF_UP);
-
         }
+        // button4が押された
 
-        if (r == null) {
-            Toast.makeText(MainActivity.this, "正しい値を入力してください。",
-                    Toast.LENGTH_LONG).show();
-        } else {
-            Log.d("javatest", String.valueOf(r));
-            // button4が押された
+//        if (r == null) {
+//            Toast.makeText(MainActivity.this, "正しい値を入力してください。",
+//                    Toast.LENGTH_LONG).show();
+//        } else {
+//            Log.d("javatest", String.valueOf(r));
+
             Intent intent = new Intent(this, SecondActivity.class);
             intent.putExtra("VALUE", r);
             startActivity(intent);
 
         }
     }
-}
+//}
